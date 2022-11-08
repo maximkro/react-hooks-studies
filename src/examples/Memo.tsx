@@ -18,6 +18,8 @@ export const Memo = () => {
         return complexAlg(number);
     }, [number]);
 
+    //useMemo is used to keep unchanged object not callback as in useCallback
+    // no loss of reference after rerendering :)
     const styles = React.useMemo(() => ({ color: colored ? "darkred" : "black" }), [colored])
 
     React.useEffect(() => {
