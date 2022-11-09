@@ -1,18 +1,21 @@
 import React from 'react';
 import { Main } from './Main';
-import { Alert } from './examples/alert/Alert';
-import { AlertProvider } from './examples/alert/AlertContext';
 
+const useInput = (initValue: any) => {
+  const [value, setValue] = React.useState(initValue);
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value);
+  }
+  return { value, onChange }
+}
 
 function App() {
-
+  const input = useInput(' ');
   return (
-    <AlertProvider>
-      <div className="container pt-3">
-        <Alert />
-        <Main />
-      </div>
-    </AlertProvider>
+    <div className={"container pt-3"}>
+      <h1>{input.value}</h1>
+      <input type="text" placeholder="write something" {...input} />
+    </div>
 
   );
 }
