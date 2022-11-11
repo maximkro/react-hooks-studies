@@ -1,30 +1,32 @@
-import React from 'react';
-import { Main } from './Main';
+import React, { useState } from 'react';
+import ListClassCmp from './ListClassCmp';
+import { ListFncCmp } from './ListFncCmp';
+import { ListUseRef } from './ListUseRef';
+import { Memo } from './examples/Memo';
+import { MemoCounter } from './memo-counter/MemoCounter';
+import { Buttons } from './callback.counter/Buttons';
 
-const useInput = (initValue: any) => {
-  const [value, setValue] = React.useState(initValue);
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
-  };
-
-  const clear = () => setValue('');
-  return {
-    bind: { value, onChange },
-    value,
-    clear
-  }
-}
 
 function App() {
-  const input = useInput(' ');
-  return (
-    <div className={"container pt-3"}>
-      <h1>{input.value}</h1>
-      <input type="text" placeholder="write something" {...input.bind} />
-      <button className="btn btn-warning" onClick={() => input.clear()}>clear</button>
-    </div>
 
+  const [visible, setVisible] = useState<boolean | null>(true);
+  const [count, setCount] = React.useState<number>(0);
+
+  const Plus = React.useCallback(() => { setCount(prev => prev + 1) }, [setCount]);
+  const Minus = React.useCallback(() => { setCount(prev => prev - 1) }, [setCount]);
+
+  return (
+    // <div className="container col-2">
+    //   {visible && <ListUseRef />}
+    //   <button className="btn btn-success" onClick={() => setVisible(prev => !prev)}>setvisible</button>
+    // </div>
+
+    <>
+      <h1>{count}</h1>
+      <Buttons onMinus={Minus} onPlus={Plus} />
+    </>
   );
+
 }
 
 export default App;
