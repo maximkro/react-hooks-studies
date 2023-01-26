@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
-const Effect = () => {
+export const Effect = () => {
     const [type, setType] = useState('users');
     const [data, setData] = useState('');
     const [pos, setPos] = useState({ x: 0, y: 0 });
@@ -19,6 +19,7 @@ const Effect = () => {
         console.log('Component did Mount');
         window.addEventListener('mousemove', mouseMoveHandler);
 
+        //will return on componentWillUnmount()
         return () => {
             window.removeEventListener('mousemove', mouseMoveHandler);
         }
@@ -31,8 +32,8 @@ const Effect = () => {
             <button onClick={() => setType('todos')} type="button" className="btn btn-secondary" style={{ margin: '5px' }}>Todo</button>
             <button onClick={() => setType('posts')} type="button" className="btn btn-secondary" style={{ margin: '5px' }}>Posts</button>
 
-            {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
-            <pre>{JSON.stringify(pos, null, 2)}</pre>
+            <pre>{JSON.stringify(data, null, 2)}</pre>
+            {/* <pre>{JSON.stringify(pos, null, 2)}</pre> */}
         </div>
     );
 }

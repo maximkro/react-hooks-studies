@@ -1,6 +1,6 @@
 import React from "react";
 
-const Ref = () => {
+export const Ref = () => {
     const [count, setCount] = React.useState(0);
     const [valueTwo, setValueTwo] = React.useState('hello')
     const [value, setValue] = React.useState('initial')

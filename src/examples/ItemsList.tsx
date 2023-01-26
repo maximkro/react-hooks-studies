@@ -10,11 +10,12 @@ export const ItemsList: React.FC<IItemsList> = ({ getItems }) => {
 
         const newItems = getItems();
         setItems(newItems);
-        //console.log('render');
+        
     }, [getItems])
+    console.log('render');
     return (
         <ul>
             {items.map(i => <li key={i}>{i}</li>)}
         </ul>
-    )
-}
+    );
+};

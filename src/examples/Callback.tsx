@@ -3,7 +3,7 @@ import { ItemsList } from './ItemsList'
 
 
 
-const Callback = () => {
+export const Callback = () => {
 
     const [colored, setColored] = React.useState(false);
     const [count, setCount] = React.useState(1);
