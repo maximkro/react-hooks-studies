@@ -6,11 +6,11 @@ interface IChildren {
     children: ReactNode
 }
 
-export const Section: React.FC<IChildren> = (props) => {
+export const Section: React.FC<IChildren> = ({level, children}) => {
     return (
-        <LevelContext.Provider value={{level: props.level}}>
+        <LevelContext.Provider value={{level: level}}>
             <section className="section">
-                {props.children}
+                {children}
             </section>
         </LevelContext.Provider >
  
