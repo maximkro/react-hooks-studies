@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 interface ITaskListProps {
     tasks: ITask[]
-    onChangeTask: () => void;
-    onDeleteTask: () => void;
+    onChangeTask: (task: ITask) => void;
+    onDeleteTask: (taskId: string) => void;
 }
 
 export interface ITask {
@@ -13,7 +13,7 @@ export interface ITask {
 }
 
 interface ITaskCardProps {
-    task: ITask
+    task: ITask;
     onChange: (task: ITask) => void;
     onDelete: (id: string) => void;
 }
@@ -65,7 +65,7 @@ const TaskCard: React.FC<ITaskCardProps> = ({ task, onChange, onDelete }) => {
                 onChange={(e) => { onChange({ ...task, done: e.target.checked }); }}
             />
             {taskContent}
-            <button onClick={() => onDelete(task.id)}></button>
+            <button onClick={() => onDelete(task.id)}>delete</button>
         </label>
     )
 }
